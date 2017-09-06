@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="fields">
     <%= form.label :name %>
     <%= form.text_field :name, id: :product_type_name %>
   </div>
 
-  <%= form.fields_for :fields do |builder| %>
-    <%= render 'field_fields', f: builder %>
+  <%= form.fields_for :fields, remote: true do |builder| %>
+    <%= render 'field', f: builder %>
   <% end %>
-  <%= link_to_add_fields "Add Field", form, :fields %>
 
   <div class="actions">
     <%= form.submit %>
+  <%= link_to_add_row('Add Task', form, :fields, class: 'btn btn-primary') %>
   </div>
 <% end %>
